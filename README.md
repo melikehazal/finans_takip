@@ -1,16 +1,48 @@
-# finans_takip
+# Kişisel Finans Takip Uygulaması
 
-A new Flutter project.
+Bu proje, Flutter kullanılarak geliştirilen basit ve anlaşılır bir **kişisel finans takip uygulaması**dır.  
+Amaç; bütçe, harcama ve kategori bazlı analiz kavramlarını mobil uygulama geliştirme pratiğiyle birleştirmektir.
 
-## Getting Started
+Proje bir **öğrenme ve mimari deneme çalışması** olarak tamamlanmış, aktif geliştirme süreci bilinçli olarak sonlandırılmıştır.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## Uygulama Ne Yapar?
+- Aylık bütçe tanımlama ve görüntüleme  
+- Harcama ekleme ve toplam harcama takibi  
+- Kalan bütçenin otomatik hesaplanması  
+- Kategori bazlı harcama dağılımının grafiklerle gösterimi  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Ekran Görüntüleri
+
+<img src="assets/screenshots/home.png" width="250" />
+<img src="assets/screenshots/add_expense.png" width="250" />
+<img src="assets/screenshots/charts.png" width="250" />
+
+---
+
+
+## Teknik Detaylar
+- **Flutter (Dart)**
+- **Provider** ile state management
+- **fl_chart** ile görselleştirme
+- Katmanlı ve okunabilir dosya yapısı
+
+> Local veri saklama için Hive entegrasyonu planlanmış ancak uygulanmamıştır.
+
+---
+
+## Proje Yapısı
+```text
+lib/
+ ├─ models/
+ ├─ providers/
+ ├─ pages/
+ └─ widgets/
+
+---
+
+
+
