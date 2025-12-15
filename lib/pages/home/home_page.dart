@@ -1,3 +1,4 @@
+import 'package:finans_takip/pages/charts/charts_page.dart';
 import 'package:finans_takip/pages/expense/add_expense_page.dart';
 import 'package:finans_takip/pages/settings/set_budget_page.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class HomePage extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "Ayın Bütçesi:",
+                    "Aylık Bütçe Takip",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
@@ -47,12 +48,27 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Spacer(),
-                  IconButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => SetBudgetPage()),
+                  Tooltip(
+                    message: "Bütçe Ekle",
+                    child: IconButton(
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => SetBudgetPage()),
+                      ),
+                      icon: Icon(Icons.add_circle_outline),
                     ),
-                    icon: Icon(Icons.add_circle_outline),
+                  ),
+
+                  Tooltip(
+                    message: "Analiz Sayfası",
+                    child: IconButton(
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => ChartsPage()),
+                      ),
+
+                      icon: Icon(Icons.bar_chart),
+                    ),
                   ),
                 ],
               ),

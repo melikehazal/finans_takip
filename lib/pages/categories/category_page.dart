@@ -15,7 +15,6 @@ class CategoryPage extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back, color: Colors.black),
         ),
-
         title: Text(
           "Kategoriler",
           style: TextStyle(
@@ -25,42 +24,78 @@ class CategoryPage extends StatelessWidget {
           ),
         ),
       ),
+
       body: GridView.count(
-        crossAxisCount: 2, //soldan sağa kaç eleman olacak
-        crossAxisSpacing: 5, //soldan sağa sutünlar arası boşluk
-        mainAxisSpacing: 5, //yukardan aşağı sutünlar arası boşluk
-        padding: EdgeInsets.all(
-          10,
-        ), //her elemanın çevresine verilen boşluk miktarı
-        children: categories.map((cat) {
-          return InkWell(
+        crossAxisCount: 2,
+        crossAxisSpacing: 12,
+        mainAxisSpacing: 12,
+        padding: EdgeInsets.all(16),
+
+        children: [
+          // -------------------- TÜM KATEGORİLER --------------------
+          ...categories.map((cat) {
+            return InkWell(
+              onTap: () => Navigator.pop(context, cat.id),
+              borderRadius: BorderRadius.circular(16),
+
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(cat.color),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                padding: EdgeInsets.all(20),
+
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(cat.iconData, size: 48, color: Colors.white),
+                    SizedBox(height: 12),
+                    Text(
+                      cat.name,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          }).toList(),
+
+          // -------------------- YENİ KATEGORİ KARTI --------------------
+          InkWell(
             onTap: () {
-              Navigator.pop(context, cat.id);
+              // Yeni kategori ekleme sayfasını burada açacağız
             },
+            borderRadius: BorderRadius.circular(16),
             child: Container(
               decoration: BoxDecoration(
-                color: Color(cat.color),
+                color: Colors.grey.shade300,
                 borderRadius: BorderRadius.circular(16),
               ),
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.circle, size: 40, color: Colors.white),
+                children: const [
+                  Icon(Icons.add, size: 48, color: Colors.black87),
                   SizedBox(height: 12),
                   Text(
-                    cat.name,
+                    "Yeni Kategori",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: Colors.black87,
                     ),
                   ),
                 ],
               ),
             ),
-          );
-        }).toList(),
+          ),
+        ],
       ),
     );
   }

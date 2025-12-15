@@ -59,4 +59,40 @@ class ExpenseProvider extends ChangeNotifier {
     }
     return total;
   }
+
+  Map<String, double> getMonthlyTotals() {
+    Map<String, double> monthlyTotals = {};
+
+    for (var expense in expenses) {
+      final year = expense.date.year;
+      final month = expense.date.month;
+
+      final key = "$year-${month.toString().padLeft(2, '0')}";
+
+      if (!monthlyTotals.containsKey(key)) {
+        monthlyTotals[key] = expense.amount;
+      } else {
+        monthlyTotals[key] = monthlyTotals[key]! + expense.amount;
+      }
+    }
+    return monthlyTotals;
+  }
+
+  Map<String, double> getCategoryTotalsForMonth(int month, int year) {
+    Map<String, double> categoryTotals = {};
+
+    for (var expense in expenses) {
+      if (expense.date.month == month && expense.date.year == year) {
+        final category = expense.categoryId;
+
+        if (!categoryTotals.containsKey(category)) {
+          categoryTotals[category] = expense.amount;
+        } else {
+          categoryTotals[category] = categoryTotals[category]! + expense.amount;
+        }
+      }
+    }
+
+    return categoryTotals;
+  }
 }
